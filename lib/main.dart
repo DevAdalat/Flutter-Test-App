@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 var list = '';
 
 void main() async {
-	list = (await NetworkInterface.list(includeLoopback: true,includeLinkLocal: true)).toString();
 	runApp(const MyApp());
 }
 
@@ -36,8 +34,23 @@ class Home extends StatelessWidget {
 								width: double.infinity,
 								child: ListView(
 										children: [
-											Text(NetworkInterface.listSupported.toString()),
-											Text(list)
+											Text("Directory.systemTemp.path" + Directory.systemTemp.path),
+											Text( 'Directory.current.path' + Directory.current.path),
+											Text( 'Platform.pathSeparator' + Platform.pathSeparator),
+											Text( "Platform.localeName" + Platform.localeName),
+											Text( "Platform.operatingSystem" + Platform.operatingSystem),
+											Text( "Platform.executable" + Platform.executable),
+											Text( "Platform.localHostname" + Platform.localHostname),
+											Text( "Platform.operatingSystemVersion" + Platform.operatingSystemVersion),
+											Text( "Platform.resolvedExecutable" + Platform.resolvedExecutable),
+											Text( "Platform.numberOfProcessors" + Platform.numberOfProcessors.toString()),
+											Text( "Platform.environment" + Platform.environment.toString()),
+											Text( "Platform.script.path" + Platform.script.path),
+											Text( "Platform.resolvedExecutable" + Platform.resolvedExecutable),
+											Text( "Platform.packageConfig" + Platform.packageConfig.toString()),
+											Text('Platform.script.userInfo' + Platform.script.userInfo),
+											Text( "Platform.script.host" + Platform.script.host ),
+											Text( "Platform.script.port" + Platform.script.port.toString() )
 										],
 								),
 						),
