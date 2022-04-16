@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-var list = '';
-
 void main() async {
 	runApp(const MyApp());
 }
@@ -29,12 +27,9 @@ class Home extends StatelessWidget {
 	Widget build(BuildContext context) {
 		return Scaffold(
 				body: Center(
-						child: SizedBox(
-								height: 300,
-								width: double.infinity,
 								child: ListView(
 										children: [
-											Text("Directory.systemTemp.path" + Directory.systemTemp.path),
+											Text( "Directory.systemTemp.path" + Directory.systemTemp.path),
 											Text( 'Directory.current.path' + Directory.current.path),
 											Text( 'Platform.pathSeparator' + Platform.pathSeparator),
 											Text( "Platform.localeName" + Platform.localeName),
@@ -48,11 +43,10 @@ class Home extends StatelessWidget {
 											Text( "Platform.script.path" + Platform.script.path),
 											Text( "Platform.resolvedExecutable" + Platform.resolvedExecutable),
 											Text( "Platform.packageConfig" + Platform.packageConfig.toString()),
-											Text('Platform.script.userInfo' + Platform.script.userInfo),
+											Text( 'Platform.script.userInfo' + Platform.script.userInfo),
 											Text( "Platform.script.host" + Platform.script.host ),
-											Text( "Platform.script.port" + Platform.script.port.toString() )
+											Text( "Platform.script.port" + Platform.script.port.toString())
 										],
-								),
 						),
 				),
 		);
