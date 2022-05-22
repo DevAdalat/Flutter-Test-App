@@ -6,6 +6,10 @@ jobs:
    build:
      name: Test, build and release
      runs-on: ubuntu-latest
+     env: 
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      GH_REF: ${{ github.ref }}
      steps:
         - name: Checkout
           uses: actions/checkout@v1
@@ -35,17 +39,19 @@ jobs:
 
         - name: Build Android APK
           run: flutter build apk --target-platform=android-arm64
-        - name: Upload To Artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: Home
-            path: build/app/outputs/flutter-apk/app-release.apk
-        - name: Upload binaries to release
-          uses: svenstaro/upload-release-action@v2
-          with:
-            repo_token: ${{ secrets.GITHUB_TOKEN }}
-            file: build/app/outputs/flutter-apk/app-release.apk
-            asset_name: app-release.apk
-            tag: ${{ github.ref }}
-            overwrite: true
-            body: "Released APK"
+        - name: Upload APK
+          run: python3 .github/workflows/upload-release-assets.py
+#       - name: Upload To Artifacts
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: Home
+#           path: build/app/outputs/flutter-apk/app-release.apk
+#       - name: Upload binaries to release
+#         uses: svenstaro/upload-release-action@v2
+#         with:
+#           repo_token: ${{ secrets.GITHUB_TOKEN }}
+#           file: build/app/outputs/flutter-apk/app-release.apk
+#           asset_name: app-release.apk
+#           tag: ${{ github.ref }}
+#           overwrite: true
+#           body: "Released APK"
