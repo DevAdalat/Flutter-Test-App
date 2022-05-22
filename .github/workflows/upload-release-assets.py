@@ -4,10 +4,10 @@
 # Author: Xuxin He <hxxtom@gmail.com>
 # License: GPLv3, https://www.gnu.org/licenses/gpl-3.0.en.html
 # https://gist.github.com/tomac4t/16dc1e91d95c94f60251e586672b6314
-import json
 import mimetypes
 import os
 import sys
+from datetime import date
 
 import requests
 
@@ -21,7 +21,10 @@ import requests
 GITHUB_TOKEN = os.environ["GH_TOKEN"];
 GITHUB_REPOSITORY = os.environ["GH_REPO"];
 GITHUB_REF = os.environ["GH_REF"];
-GITHUB_TAGNAME = GITHUB_REF.replace(u'refs/tags/','');
+from datetime import date
+today = date.today()
+d1 = today.strftime("%d%m%Y")
+GITHUB_TAGNAME = d1;
 
 # List releases for a repository:
 # https://developer.github.com/v3/repos/releases/#list-releases-for-a-repository
