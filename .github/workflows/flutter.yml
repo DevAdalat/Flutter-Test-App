@@ -39,7 +39,9 @@ jobs:
            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            GH_REPO: ${{ github.repository }}
            GH_REF: ${{ github.ref }}
-
+           
+        - name: Change Permission
+          run: chmod +x .github/workflows/upload-release-assets.py
         - name: Upload APK
           run: .github/workflows/upload-release-assets.py
 #       - name: Upload To Artifacts
