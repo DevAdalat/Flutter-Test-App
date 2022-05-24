@@ -6,10 +6,6 @@ jobs:
    build:
      name: Test, build and release
      runs-on: ubuntu-latest
-     env: 
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GH_REPO: ${{ github.repository }}
-      GH_REF: ${{ github.ref }}
      steps:
         - name: Checkout
           uses: actions/checkout@v1
@@ -39,8 +35,13 @@ jobs:
 
         - name: Build Android APK
           run: flutter build apk --target-platform=android-arm64
+          env: 
+           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           GH_REPO: ${{ github.repository }}
+           GH_REF: ${{ github.ref }}
+
         - name: Upload APK
-          run: python3 .github/workflows/upload-release-assets.py
+          run: .github/workflows/upload-release-assets.py
 #       - name: Upload To Artifacts
 #         uses: actions/upload-artifact@v2
 #         with:
