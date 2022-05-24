@@ -27,8 +27,8 @@ GITHUB_TAGNAME = GITHUB_REF.replace(u'refs/tags/','');
 # https://developer.github.com/v3/repos/releases/#list-releases-for-a-repository
 RELEASES_API = "https://api.github.com/repos/" + GITHUB_REPOSITORY + "/releases";
 
-# The path of assets, eg. "out/".
-OUT_FILES_PATH = "out/"
+# The path of assets, eg. "build/app/outputs/flutter-apk/".
+OUT_FILES_PATH = "build/app/outputs/flutter-apk/"
 
 def get_uploadurl():
   global UPLOAD_URL
@@ -69,7 +69,7 @@ def upload_assets():
 
   FAILURE_MARK = "0"
   
-  for i in range (0, OUT_FILES_NUMBER)
+  for i in range (0, OUT_FILES_NUMBER):
     FILENAME = OUT_FILES[i]
     print("Current asset: " + FILENAME)
 
